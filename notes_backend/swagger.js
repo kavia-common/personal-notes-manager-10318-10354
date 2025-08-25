@@ -4,10 +4,27 @@ const options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'My Express API',
+      title: 'Notes API',
       version: '1.0.0',
-      description: 'A simple Express API documented with Swagger',
-    }
+      description: 'Production-ready Express API for managing personal notes.',
+      contact: {
+        name: 'Notes API',
+      },
+    },
+    components: {
+      schemas: {
+        Note: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer' },
+            title: { type: 'string', maxLength: 255 },
+            content: { type: 'string' },
+            created_at: { type: 'string', format: 'date-time' },
+            updated_at: { type: 'string', format: 'date-time' },
+          },
+        },
+      },
+    },
   },
   apis: ['./src/routes/*.js'], // Path to the API docs
 };
